@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Composable Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--cc-navy:#0D1F3C;--cc-slate:#1E3A5F;--cc-accent:#1D9E75;--cc-accent-light:#E1F5EE;--cc-warm:#F8F7F4;--cc-border:#E2E0DA;--cc-text:#1A1A1A;--cc-muted:#6B7280;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;}
+    body{font-family:var(--font-body);color:var(--cc-text);background:#fff;font-size:15px;line-height:1.6}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;border-bottom:0.5px solid var(--cc-border);background:#fff;position:sticky;top:0;z-index:100}
+    .nav-logo{font-family:var(--font-display);font-size:18px;font-weight:500;color:var(--cc-navy);letter-spacing:-0.3px;text-decoration:none}
+    .nav-logo span{color:var(--cc-accent)}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:13px;font-weight:400;color:var(--cc-muted);text-decoration:none;letter-spacing:0.3px;transition:color .2s}
+    .nav-links a:hover{color:var(--cc-navy)}
+    .nav-links a.active{color:var(--cc-navy);font-weight:500}
+    .nav-cta{font-size:13px;font-weight:500;color:#fff;background:var(--cc-navy);padding:8px 18px;border-radius:6px;text-decoration:none;transition:background .2s}
+    .nav-cta:hover{background:var(--cc-slate)}
+    .page-hero{padding:4rem 2.5rem 3rem;max-width:1100px;margin:0 auto;border-bottom:0.5px solid var(--cc-border)}
+    .page-eyebrow{font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--cc-accent);text-transform:uppercase;margin-bottom:.75rem}
+    .page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.75rem);font-weight:400;line-height:1.2;color:var(--cc-navy);letter-spacing:-0.5px;margin-bottom:1rem}
+    .page-hero h1 em{font-style:italic;color:var(--cc-accent)}
+    .page-hero p{font-size:15px;color:var(--cc-muted);line-height:1.7;font-weight:300;max-width:640px}
+    .about-body{padding:5rem 2.5rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr;gap:5rem;align-items:start}
+    .about-prose p{font-size:15px;color:var(--cc-text);line-height:1.8;font-weight:300;margin-bottom:1.5rem}
+    .about-prose p:last-child{margin-bottom:0}
+    .about-prose strong{font-weight:500;color:var(--cc-navy)}
+    .about-sidebar{}
+    .sidebar-block{margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:0.5px solid var(--cc-border)}
+    .sidebar-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .sidebar-label{font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--cc-accent);margin-bottom:.75rem}
+    .sidebar-block p{font-size:13px;color:var(--cc-muted);line-height:1.6;font-weight:300}
+    .sidebar-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+    .sidebar-list li{font-size:13px;color:var(--cc-muted);font-weight:300;display:flex;align-items:flex-start;gap:.6rem}
+    .sidebar-list li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--cc-accent);flex-shrink:0;margin-top:8px}
+    .network-section{padding:5rem 2.5rem;background:var(--cc-warm)}
+    .network-inner{max-width:1100px;margin:0 auto}
+    .section-eyebrow{font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--cc-accent);text-transform:uppercase;margin-bottom:.75rem}
+    .section-title{font-family:var(--font-display);font-size:clamp(1.6rem,2.5vw,2.1rem);font-weight:400;color:var(--cc-navy);letter-spacing:-0.3px;margin-bottom:1rem}
+    .network-desc{font-size:14px;color:var(--cc-muted);line-height:1.7;font-weight:300;max-width:640px;margin-bottom:3rem}
+    .network-domains{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--cc-border);border:0.5px solid var(--cc-border);border-radius:12px;overflow:hidden}
+    .domain-item{background:#fff;padding:1.25rem;transition:background .2s}
+    .domain-item:hover{background:#f3f4f6}
+    .domain-dot{width:6px;height:6px;border-radius:50%;background:var(--cc-accent);margin-bottom:.6rem}
+    .domain-item h4{font-size:13px;font-weight:500;color:var(--cc-navy);margin-bottom:.25rem}
+    .domain-item p{font-size:12px;color:var(--cc-muted);line-height:1.5;font-weight:300}
+    .cta{padding:5rem 2.5rem;background:var(--cc-navy)}
+    .cta-inner{max-width:700px;margin:0 auto;text-align:center}
+    .cta h2{font-family:var(--font-display);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;color:#fff;margin-bottom:1rem;letter-spacing:-0.3px}
+    .cta h2 em{font-style:italic;color:var(--cc-accent)}
+    .cta p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:2rem;font-weight:300;line-height:1.7}
+    .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-light{font-size:13px;font-weight:500;color:var(--cc-navy);background:#fff;padding:11px 24px;border-radius:6px;text-decoration:none;transition:opacity .2s}
+    .btn-light:hover{opacity:.9}
+    .btn-ghost{font-size:13px;font-weight:400;color:rgba(255,255,255,.7);padding:11px 24px;border-radius:6px;text-decoration:none;border:0.5px solid rgba(255,255,255,.2);transition:border-color .2s}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.5)}
+    footer{padding:1.5rem 2.5rem;border-top:0.5px solid var(--cc-border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+    .footer-logo{font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--cc-navy);text-decoration:none}
+    .footer-logo span{color:var(--cc-accent)}
+    .footer-text{font-size:12px;color:var(--cc-muted)}
+    .footer-links{display:flex;gap:1.5rem;list-style:none}
+    .footer-links a{font-size:12px;color:var(--cc-muted);text-decoration:none}
+    .footer-links a:hover{color:var(--cc-navy)}
+    @media(max-width:768px){.about-body{grid-template-columns:1fr;gap:2.5rem}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Composable<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/approach/">Approach</a></li>
+    <li><a href="/about/" class="active">About</a></li>
+  </ul>
+  <a href="mailto:nick@composability.co" class="nav-cta">Get in touch</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-eyebrow">About</div>
+  <h1>Built for deep tech <em>that needs to ship</em></h1>
+  <p>Composable Consulting exists to solve one specific problem: technically brilliant companies that struggle to build the commercial infrastructure to grow. We close that gap.</p>
+</div>
+
+<div class="about-body">
+  <div class="about-prose">
+    <p><strong>Composable Consulting</strong> is a boutique technology consulting practice specializing in go-to-market strategy, enterprise sales, channel development, and product marketing for deep technology companies. The practice was built around a specific observation: the hardest technology to sell is often the most important, and the people who build it rarely have the commercial infrastructure to take it to market at scale.</p>
+
+    <p>The practice operates in verticals where technical complexity is a feature, not a bug: GPU networking, spatial audio, data center infrastructure, telco edge, semiconductor technology, and AI-powered software. These are markets where being fluent in the technology is a prerequisite for building credibility with buyers, partners, and channel programs.</p>
+
+    <p><strong>What makes this practice different</strong> is the combination of 20+ years of enterprise technology sales experience, hands-on technical exposure at the hardware and software level, and a curated network of subject matter experts that can be brought to bear on any engagement. When a deal requires a GPU architect, a DSP specialist, or a telco infrastructure expert, one is already accessible. That bench is a structural advantage in complex enterprise sales cycles.</p>
+
+    <p>The practice is deliberately small. A limited number of active engagements ensures each client gets the depth of attention that complex, early-stage GTM requires. This is not a high-volume advisory practice. It is an embedded commercial partnership.</p>
+
+    <p><strong>Current engagements</strong> include serving as Head of Sales at Juice Labs, the inventors of GPU-over-IP technology, and as Sales and Marketing Advisor to BACCH Labs, a breakthrough spatial audio technology company preparing for a major market launch. Both reflect the practice's core focus: technically complex, early-stage companies with transformative technology that needs a commercial engine built around it.</p>
+
+    <p>Composable Consulting is based in San Clemente, California, with active client relationships across North America, Europe, and Asia-Pacific.</p>
+  </div>
+
+  <div class="about-sidebar">
+    <div class="sidebar-block">
+      <div class="sidebar-label">Founded</div>
+      <p>San Clemente, California</p>
+    </div>
+    <div class="sidebar-block">
+      <div class="sidebar-label">Focus</div>
+      <ul class="sidebar-list">
+        <li>GPU &amp; AI infrastructure</li>
+        <li>Data centers &amp; global networks</li>
+        <li>Telco &amp; edge computing</li>
+        <li>Spatial audio &amp; DSP</li>
+        <li>Enterprise GTM &amp; channel</li>
+        <li>Product marketing &amp; launch</li>
+      </ul>
+    </div>
+    <div class="sidebar-block">
+      <div class="sidebar-label">Regions</div>
+      <ul class="sidebar-list">
+        <li>North America</li>
+        <li>Europe</li>
+        <li>Asia-Pacific</li>
+      </ul>
+    </div>
+    <div class="sidebar-block">
+      <div class="sidebar-label">Contact</div>
+      <p><a href="mailto:nick@composability.co" style="color:var(--cc-accent);text-decoration:none">nick@composability.co</a></p>
+    </div>
+  </div>
+</div>
+
+<section class="network-section">
+  <div class="network-inner">
+    <div class="section-eyebrow">The network advantage</div>
+    <h2 class="section-title">Every engagement comes with a bench.</h2>
+    <p class="network-desc">A curated network of subject matter experts and trusted advisors, each with deep hands-on experience in their domain. When a deal needs a specialist, one is already on the team.</p>
+    <div class="network-domains">
+      <div class="domain-item"><div class="domain-dot"></div><h4>GPU architecture &amp; GPU software</h4><p>NVIDIA CUDA, AMD ROCm, GPU virtualization, DPU design, inference optimization, HPC</p></div>
+      <div class="domain-item"><div class="domain-dot"></div><h4>Data centers &amp; global networks</h4><p>Colocation, interconnect, hyperscaler ecosystems, carrier-neutral facilities, global WAN</p></div>
+      <div class="domain-item"><div class="domain-dot"></div><h4>DSP, SOC &amp; embedded systems</h4><p>Signal processing, hardware-software integration, audio and RF systems design</p></div>
+      <div class="domain-item"><div class="domain-dot"></div><h4>Telco &amp; carrier networks</h4><p>AI-RAN, edge infrastructure, carrier sales cycles, MWC ecosystem</p></div>
+      <div class="domain-item"><div class="domain-dot"></div><h4>Enterprise software &amp; cloud</h4><p>SaaS GTM, channel programs, VAR and SI ecosystems, system integration</p></div>
+      <div class="domain-item"><div class="domain-dot"></div><h4>Life sciences &amp; pharma HPC</h4><p>Slurm workloads, GPU compute for drug discovery, biopharma procurement</p></div>
+      <div class="domain-item"><div class="domain-dot"></div><h4>Spatial audio &amp; immersive media</h4><p>3D audio technology, consumer and professional AV markets, CES landscape</p></div>
+      <div class="domain-item"><div class="domain-dot"></div><h4>Media &amp; entertainment</h4><p>Rendering pipelines, VFX infrastructure, studio technology, streaming platforms</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-inner">
+    <h2>Let's build something <em>together</em></h2>
+    <p>If your technology is complex, your market is demanding, and your commercial infrastructure needs building, this is the right conversation to have.</p>
+    <div class="cta-actions">
+      <a href="mailto:nick@composability.co" class="btn-light">nick@composability.co</a>
+      <a href="/work/" class="btn-ghost">See current work</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="/" class="footer-logo">Composable<span>.</span></a>
+  <span class="footer-text">composability.co &nbsp;&middot;&nbsp; San Clemente, CA</span>
+  <ul class="footer-links">
+    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/ComposableConsulting" target="_blank">GitHub</a></li>
+    <li><a href="mailto:nick@composability.co">Contact</a></li>
+  </ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Approach — Composable Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--cc-navy:#0D1F3C;--cc-slate:#1E3A5F;--cc-accent:#1D9E75;--cc-accent-light:#E1F5EE;--cc-warm:#F8F7F4;--cc-border:#E2E0DA;--cc-text:#1A1A1A;--cc-muted:#6B7280;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;}
+    body{font-family:var(--font-body);color:var(--cc-text);background:#fff;font-size:15px;line-height:1.6}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;border-bottom:0.5px solid var(--cc-border);background:#fff;position:sticky;top:0;z-index:100}
+    .nav-logo{font-family:var(--font-display);font-size:18px;font-weight:500;color:var(--cc-navy);letter-spacing:-0.3px;text-decoration:none}
+    .nav-logo span{color:var(--cc-accent)}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:13px;font-weight:400;color:var(--cc-muted);text-decoration:none;letter-spacing:0.3px;transition:color .2s}
+    .nav-links a:hover{color:var(--cc-navy)}
+    .nav-links a.active{color:var(--cc-navy);font-weight:500}
+    .nav-cta{font-size:13px;font-weight:500;color:#fff;background:var(--cc-navy);padding:8px 18px;border-radius:6px;text-decoration:none;transition:background .2s}
+    .nav-cta:hover{background:var(--cc-slate)}
+    .page-hero{padding:4rem 2.5rem 3rem;max-width:1100px;margin:0 auto;border-bottom:0.5px solid var(--cc-border)}
+    .page-eyebrow{font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--cc-accent);text-transform:uppercase;margin-bottom:.75rem}
+    .page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.75rem);font-weight:400;line-height:1.2;color:var(--cc-navy);letter-spacing:-0.5px;margin-bottom:1rem}
+    .page-hero h1 em{font-style:italic;color:var(--cc-accent)}
+    .page-hero p{font-size:15px;color:var(--cc-muted);line-height:1.7;font-weight:300;max-width:640px}
+    .approach-full{padding:5rem 2.5rem;max-width:1100px;margin:0 auto}
+    .phase{display:grid;grid-template-columns:180px 1fr;gap:4rem;padding:3.5rem 0;border-bottom:0.5px solid var(--cc-border);align-items:start}
+    .phase:last-child{border-bottom:none}
+    .phase-num{font-family:var(--font-display);font-size:3.5rem;font-weight:400;color:var(--cc-accent-light);line-height:1;letter-spacing:-2px}
+    .phase-label{font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--cc-accent);margin-top:.25rem}
+    .phase-right h2{font-family:var(--font-display);font-size:1.5rem;font-weight:400;color:var(--cc-navy);letter-spacing:-0.3px;margin-bottom:1rem}
+    .phase-right p{font-size:14px;color:var(--cc-muted);line-height:1.75;font-weight:300;margin-bottom:1rem}
+    .phase-right p:last-child{margin-bottom:0}
+    .principles{padding:5rem 2.5rem;background:var(--cc-warm)}
+    .principles-inner{max-width:1100px;margin:0 auto}
+    .section-eyebrow{font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--cc-accent);text-transform:uppercase;margin-bottom:.75rem}
+    .section-title{font-family:var(--font-display);font-size:clamp(1.6rem,2.5vw,2.1rem);font-weight:400;color:var(--cc-navy);letter-spacing:-0.3px;margin-bottom:3rem}
+    .principles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+    .principle{border-top:2px solid var(--cc-accent);padding-top:1.25rem}
+    .principle h3{font-size:15px;font-weight:500;color:var(--cc-navy);margin-bottom:.5rem}
+    .principle p{font-size:13px;color:var(--cc-muted);line-height:1.65;font-weight:300}
+    .cta{padding:5rem 2.5rem;background:var(--cc-navy)}
+    .cta-inner{max-width:700px;margin:0 auto;text-align:center}
+    .cta h2{font-family:var(--font-display);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;color:#fff;margin-bottom:1rem;letter-spacing:-0.3px}
+    .cta h2 em{font-style:italic;color:var(--cc-accent)}
+    .cta p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:2rem;font-weight:300;line-height:1.7}
+    .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-light{font-size:13px;font-weight:500;color:var(--cc-navy);background:#fff;padding:11px 24px;border-radius:6px;text-decoration:none;transition:opacity .2s}
+    .btn-light:hover{opacity:.9}
+    .btn-ghost{font-size:13px;font-weight:400;color:rgba(255,255,255,.7);padding:11px 24px;border-radius:6px;text-decoration:none;border:0.5px solid rgba(255,255,255,.2);transition:border-color .2s}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.5)}
+    footer{padding:1.5rem 2.5rem;border-top:0.5px solid var(--cc-border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+    .footer-logo{font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--cc-navy);text-decoration:none}
+    .footer-logo span{color:var(--cc-accent)}
+    .footer-text{font-size:12px;color:var(--cc-muted)}
+    .footer-links{display:flex;gap:1.5rem;list-style:none}
+    .footer-links a{font-size:12px;color:var(--cc-muted);text-decoration:none}
+    .footer-links a:hover{color:var(--cc-navy)}
+    @media(max-width:768px){.phase{grid-template-columns:1fr;gap:1rem}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Composable<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/approach/" class="active">Approach</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+  <a href="mailto:nick@composability.co" class="nav-cta">Get in touch</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-eyebrow">Approach</div>
+  <h1>Embedded, <em>not advisory</em></h1>
+  <p>No decks that collect dust. Composable Consulting operates as an extension of your team, from first whiteboard to first deal closed. The work is hands-on, the timelines are real, and the engagements evolve with the business.</p>
+</div>
+
+<div class="approach-full">
+
+  <div class="phase">
+    <div>
+      <div class="phase-num">01</div>
+      <div class="phase-label">Discovery</div>
+    </div>
+    <div class="phase-right">
+      <h2>Discovery &amp; scoping</h2>
+      <p>Every engagement starts with a rapid but rigorous assessment of the technical environment, competitive landscape, and revenue opportunity. This is not a months-long consulting study. It's a focused sprint that produces a clear picture of where the opportunity is, what's blocking it, and what the right commercial motion looks like.</p>
+      <p>Deliverable: a structured briefing covering market positioning, ICP definition, competitive context, and a proposed scope of work. Written for people who have to act on it, not file it.</p>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div>
+      <div class="phase-num">02</div>
+      <div class="phase-label">Strategy</div>
+    </div>
+    <div class="phase-right">
+      <h2>Strategy &amp; positioning</h2>
+      <p>Market entry or expansion strategy with clear ICP, pricing, partner motion, and messaging. Grounded in real GTM patterns from 20+ years of enterprise technology sales, not generic frameworks or analyst reports.</p>
+      <p>For deep tech companies, this phase often includes translating technically complex capabilities into narratives that resonate with enterprise buyers and channel partners who don't have an engineering background. The right positioning unlocks deals that a technically accurate pitch can't close.</p>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div>
+      <div class="phase-num">03</div>
+      <div class="phase-label">Execution</div>
+    </div>
+    <div class="phase-right">
+      <h2>Execution &amp; build</h2>
+      <p>This is where most consultants stop. Composable Consulting doesn't. Hands-on delivery means running enterprise sales cycles, building partner programs, developing channel collateral, representing the company at conferences, and closing deals. If a working prototype or sales tool would accelerate the motion, that gets built too.</p>
+      <p>Current engagements involve direct ownership of the full commercial function, from first outreach to signed order, including channel partner management, conference strategy, and product marketing.</p>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div>
+      <div class="phase-num">04</div>
+      <div class="phase-label">Iteration</div>
+    </div>
+    <div class="phase-right">
+      <h2>Measure &amp; iterate</h2>
+      <p>Closed-loop reporting against pipeline, conversion, and technical milestones. What's working gets doubled down on. What isn't gets replaced. Engagements are structured to evolve with the business, not locked to a fixed SOW written before the first sales call.</p>
+      <p>For early-stage companies, the market often responds differently than the model predicted. The ability to adapt the GTM motion quickly, without renegotiating a contract, is one of the core advantages of this engagement model.</p>
+    </div>
+  </div>
+
+</div>
+
+<section class="principles">
+  <div class="principles-inner">
+    <div class="section-eyebrow">Operating principles</div>
+    <div class="section-title">How this practice works</div>
+    <div class="principles-grid">
+      <div class="principle">
+        <h3>Technical fluency is non-negotiable</h3>
+        <p>You can't sell what you don't understand. Every engagement requires getting close enough to the technology to hold credible conversations with both engineers and enterprise buyers. This is not optional.</p>
+      </div>
+      <div class="principle">
+        <h3>The bench is always available</h3>
+        <p>A curated network of subject matter experts is available on every engagement. When a deal needs a GPU architect, a DSP specialist, or a telco infrastructure expert, one is already accessible. No recruiting required.</p>
+      </div>
+      <div class="principle">
+        <h3>Scope follows reality</h3>
+        <p>Early-stage GTM is dynamic. Engagements are structured to adapt as the market responds, not constrained by a statement of work written before the first customer conversation.</p>
+      </div>
+      <div class="principle">
+        <h3>One client at a time gets full focus</h3>
+        <p>Composable Consulting takes a small number of active engagements to ensure each one gets the depth of attention it requires. This is not a high-volume advisory practice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-inner">
+    <h2>Ready to start with <em>phase one?</em></h2>
+    <p>A discovery engagement can be scoped and started quickly. No lengthy procurement process required.</p>
+    <div class="cta-actions">
+      <a href="mailto:nick@composability.co" class="btn-light">nick@composability.co</a>
+      <a href="/services/" class="btn-ghost">View all services</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="/" class="footer-logo">Composable<span>.</span></a>
+  <span class="footer-text">composability.co &nbsp;&middot;&nbsp; San Clemente, CA</span>
+  <ul class="footer-links">
+    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/ComposableConsulting" target="_blank">GitHub</a></li>
+    <li><a href="mailto:nick@composability.co">Contact</a></li>
+  </ul>
+</footer>
+</body>
+</html>

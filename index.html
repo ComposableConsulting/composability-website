@@ -9,21 +9,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --cc-navy:#0D1F3C;--cc-slate:#1E3A5F;--cc-accent:#1D9E75;--cc-accent-light:#E1F5EE;
-      --cc-warm:#F8F7F4;--cc-border:#E2E0DA;--cc-text:#1A1A1A;--cc-muted:#6B7280;
-      --font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;
-    }
+    :root{--cc-navy:#0D1F3C;--cc-slate:#1E3A5F;--cc-accent:#1D9E75;--cc-accent-light:#E1F5EE;--cc-warm:#F8F7F4;--cc-border:#E2E0DA;--cc-text:#1A1A1A;--cc-muted:#6B7280;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;}
     body{font-family:var(--font-body);color:var(--cc-text);background:#fff;font-size:15px;line-height:1.6}
     nav{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;border-bottom:0.5px solid var(--cc-border);background:#fff;position:sticky;top:0;z-index:100}
-    .nav-logo{font-family:var(--font-display);font-size:18px;font-weight:500;color:var(--cc-navy);letter-spacing:-0.3px}
+    .nav-logo{font-family:var(--font-display);font-size:18px;font-weight:500;color:var(--cc-navy);letter-spacing:-0.3px;text-decoration:none}
     .nav-logo span{color:var(--cc-accent)}
     .nav-links{display:flex;gap:2rem;list-style:none}
     .nav-links a{font-size:13px;font-weight:400;color:var(--cc-muted);text-decoration:none;letter-spacing:0.3px;transition:color .2s}
     .nav-links a:hover{color:var(--cc-navy)}
+    .nav-links a.active{color:var(--cc-navy);font-weight:500}
     .nav-cta{font-size:13px;font-weight:500;color:#fff;background:var(--cc-navy);padding:8px 18px;border-radius:6px;text-decoration:none;transition:background .2s}
     .nav-cta:hover{background:var(--cc-slate)}
-
     .hero{padding:5rem 2.5rem 4.5rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
     .hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--cc-accent);text-transform:uppercase;margin-bottom:1rem}
     .hero h1{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:400;line-height:1.2;color:var(--cc-navy);margin-bottom:1.25rem;letter-spacing:-0.5px}
@@ -39,7 +35,6 @@
     .stat-num{font-family:var(--font-display);font-size:1.75rem;font-weight:400;color:var(--cc-navy);line-height:1;white-space:nowrap;min-width:56px}
     .stat-divider{width:1px;height:32px;background:var(--cc-border);flex-shrink:0}
     .stat-label{font-size:12px;color:var(--cc-muted);font-weight:300;line-height:1.45}
-
     .value-strip{background:var(--cc-navy);padding:3.5rem 2.5rem}
     .value-strip-inner{max-width:1100px;margin:0 auto}
     .value-strip-title{font-family:var(--font-display);font-size:clamp(1.3rem,2vw,1.6rem);font-weight:400;color:#fff;margin-bottom:2.5rem;letter-spacing:-0.3px}
@@ -50,14 +45,12 @@
     .value-item-icon svg{width:16px;height:16px;stroke:var(--cc-accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
     .value-item h4{font-size:13px;font-weight:500;color:#fff;margin-bottom:.4rem}
     .value-item p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.6;font-weight:300}
-
     .clients{padding:1.5rem 2.5rem;border-top:0.5px solid var(--cc-border);border-bottom:0.5px solid var(--cc-border);background:var(--cc-warm)}
     .clients-inner{max-width:1100px;margin:0 auto}
     .clients-label{font-size:11px;font-weight:500;letter-spacing:1.2px;color:var(--cc-muted);text-transform:uppercase;margin-bottom:.75rem}
     .client-names{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
     .client-name{font-size:12px;font-weight:500;color:#9CA3AF;letter-spacing:0.3px}
     .client-sep{color:var(--cc-border);font-size:12px}
-
     .network{padding:5rem 2.5rem;background:var(--cc-warm)}
     .network-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
     .section-eyebrow{font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--cc-accent);text-transform:uppercase;margin-bottom:.75rem}
@@ -69,10 +62,9 @@
     .domain-dot{width:6px;height:6px;border-radius:50%;background:var(--cc-accent);margin-bottom:.6rem}
     .domain-item h4{font-size:13px;font-weight:500;color:var(--cc-navy);margin-bottom:.25rem}
     .domain-item p{font-size:12px;color:var(--cc-muted);line-height:1.5;font-weight:300}
-
     .services{padding:5rem 2.5rem;max-width:1100px;margin:0 auto}
     .section-header{margin-bottom:3rem}
-    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5px;background:var(--cc-border);border:0.5px solid var(--cc-border);border-radius:12px;overflow:hidden}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--cc-border);border:0.5px solid var(--cc-border);border-radius:12px;overflow:hidden}
     .service-card{background:#fff;padding:2rem 1.75rem;transition:background .2s;cursor:default}
     .service-card:hover{background:var(--cc-warm)}
     .service-icon{width:36px;height:36px;border-radius:8px;background:var(--cc-accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
@@ -81,7 +73,6 @@
     .service-card p{font-size:13px;color:var(--cc-muted);line-height:1.6;font-weight:300}
     .service-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
     .tag{font-size:11px;font-weight:400;color:var(--cc-accent);background:var(--cc-accent-light);padding:3px 9px;border-radius:4px;letter-spacing:0.2px}
-
     .approach{padding:5rem 2.5rem;background:var(--cc-warm)}
     .approach-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start}
     .approach-steps{display:flex;flex-direction:column}
@@ -90,7 +81,6 @@
     .step-num{font-family:var(--font-display);font-size:13px;color:var(--cc-accent);font-weight:400;padding-top:2px}
     .step h4{font-size:14px;font-weight:500;color:var(--cc-navy);margin-bottom:.3rem}
     .step p{font-size:13px;color:var(--cc-muted);line-height:1.6;font-weight:300}
-
     .work{padding:5rem 2.5rem;max-width:1100px;margin:0 auto}
     .work-intro{font-size:14px;color:var(--cc-muted);line-height:1.7;font-weight:300;margin-top:.75rem;max-width:560px}
     .work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:2.5rem}
@@ -105,7 +95,6 @@
     .work-card-divider{border:none;border-top:0.5px solid var(--cc-border);margin:0}
     .work-card-roles{display:flex;flex-wrap:wrap;gap:6px}
     .role-tag{font-size:11px;font-weight:400;color:var(--cc-accent);background:var(--cc-accent-light);padding:3px 9px;border-radius:4px}
-
     .cta{padding:5rem 2.5rem;background:var(--cc-navy)}
     .cta-inner{max-width:700px;margin:0 auto;text-align:center}
     .cta h2{font-family:var(--font-display);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;color:#fff;margin-bottom:1rem;letter-spacing:-0.3px}
@@ -116,33 +105,24 @@
     .btn-light:hover{opacity:.9}
     .btn-ghost{font-size:13px;font-weight:400;color:rgba(255,255,255,.7);padding:11px 24px;border-radius:6px;text-decoration:none;border:0.5px solid rgba(255,255,255,.2);transition:border-color .2s}
     .btn-ghost:hover{border-color:rgba(255,255,255,.5)}
-
     footer{padding:1.5rem 2.5rem;border-top:0.5px solid var(--cc-border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
-    .footer-logo{font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--cc-navy)}
+    .footer-logo{font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--cc-navy);text-decoration:none}
     .footer-logo span{color:var(--cc-accent)}
     .footer-text{font-size:12px;color:var(--cc-muted)}
     .footer-links{display:flex;gap:1.5rem;list-style:none}
     .footer-links a{font-size:12px;color:var(--cc-muted);text-decoration:none}
     .footer-links a:hover{color:var(--cc-navy)}
-
-    @media(max-width:768px){
-      .hero{grid-template-columns:1fr;gap:2.5rem}
-      .network-inner{grid-template-columns:1fr}
-      .approach-inner{grid-template-columns:1fr}
-      .nav-links{display:none}
-      .clients-inner{flex-direction:column;align-items:flex-start}
-    }
+    @media(max-width:768px){.hero{grid-template-columns:1fr;gap:2.5rem}.network-inner{grid-template-columns:1fr}.approach-inner{grid-template-columns:1fr}.nav-links{display:none}.services-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-
 <nav>
-  <div class="nav-logo">Composable<span>.</span></div>
+  <a href="/" class="nav-logo">Composable<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Work</a></li>
-    <li><a href="#">Approach</a></li>
-    <li><a href="#">About</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/approach/">Approach</a></li>
+    <li><a href="/about/">About</a></li>
   </ul>
   <a href="mailto:nick@composability.co" class="nav-cta">Get in touch</a>
 </nav>
@@ -154,25 +134,13 @@
     <p class="hero-desc">From GPU networking and spatial audio DSPs to global data center infrastructure and telco edge, I help technically complex companies build the sales motion, channel programs, and market presence to grow. Backed by 20+ years spanning enterprise technology, data centers, and global networks, plus a deep bench of subject matter experts across hardware, software, and systems integration.</p>
     <div class="hero-actions">
       <a href="mailto:nick@composability.co" class="btn-primary">Start a conversation</a>
-      <a href="#work" class="btn-secondary">View work</a>
+      <a href="/work/" class="btn-secondary">View work</a>
     </div>
   </div>
   <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">20+</div>
-      <div class="stat-divider"></div>
-      <div class="stat-label">Years spanning enterprise tech, data centers &amp; global networks</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">5+</div>
-      <div class="stat-divider"></div>
-      <div class="stat-label">Deep tech verticals: GPU infra, data centers, GPU software, audio, telco, media</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">0→1</div>
-      <div class="stat-divider"></div>
-      <div class="stat-label">Prototype to production, AI app development</div>
-    </div>
+    <div class="stat"><div class="stat-num">20+</div><div class="stat-divider"></div><div class="stat-label">Years spanning enterprise tech, data centers &amp; global networks</div></div>
+    <div class="stat"><div class="stat-num">5+</div><div class="stat-divider"></div><div class="stat-label">Deep tech verticals: GPU infra, data centers, GPU software, audio, telco, media</div></div>
+    <div class="stat"><div class="stat-num">0→1</div><div class="stat-divider"></div><div class="stat-label">Prototype to production, AI app development</div></div>
   </div>
 </section>
 
@@ -180,31 +148,11 @@
   <div class="value-strip-inner">
     <div class="value-strip-title">More than a sales consultant. <em>A full-stack commercial partner.</em></div>
     <div class="value-grid">
-      <div class="value-item">
-        <div class="value-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <h4>Deep tech fluency</h4>
-        <p>Comfortable at the hardware level: GPUs, DSPs, SOCs, embedded software, and systems integration. Can hold technical conversations with engineers and translate to buyers.</p>
-      </div>
-      <div class="value-item">
-        <div class="value-item-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-        <h4>Data centers &amp; global networks</h4>
-        <p>Deep background in data center infrastructure, colocation, and global network architectures. Fluent in the ecosystem of carriers, hyperscalers, and interconnect providers.</p>
-      </div>
-      <div class="value-item">
-        <div class="value-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
-        <h4>GTM strategy &amp; execution</h4>
-        <p>Hands-on channel program design, partner recruitment, pipeline building, and closing enterprise deals across complex, multi-stakeholder sales cycles.</p>
-      </div>
-      <div class="value-item">
-        <div class="value-item-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h4>SME network on demand</h4>
-        <p>A curated bench of subject matter experts spanning GPU architecture, RF &amp; signal processing, telco infrastructure, data center design, and enterprise software.</p>
-      </div>
-      <div class="value-item">
-        <div class="value-item-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-        <h4>AI-powered prototyping</h4>
-        <p>Builds working AI applications and internal tools quickly, from scoping to deployable product. Useful for sales enablement, customer demos, and operational automation.</p>
-      </div>
+      <div class="value-item"><div class="value-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h4>Deep tech fluency</h4><p>Comfortable at the hardware level: GPUs, DSPs, SOCs, embedded software, and systems integration. Can hold technical conversations with engineers and translate to buyers.</p></div>
+      <div class="value-item"><div class="value-item-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><h4>Data centers &amp; global networks</h4><p>Deep background in data center infrastructure, colocation, and global network architectures. Fluent in the ecosystem of carriers, hyperscalers, and interconnect providers.</p></div>
+      <div class="value-item"><div class="value-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><h4>GTM strategy &amp; execution</h4><p>Hands-on channel program design, partner recruitment, pipeline building, and closing enterprise deals across complex, multi-stakeholder sales cycles.</p></div>
+      <div class="value-item"><div class="value-item-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4>SME network on demand</h4><p>A curated bench of subject matter experts spanning GPU architecture, RF &amp; signal processing, telco infrastructure, data center design, and enterprise software.</p></div>
+      <div class="value-item"><div class="value-item-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h4>AI-powered prototyping</h4><p>Builds working AI applications and internal tools quickly, from scoping to deployable product. Useful for sales enablement, customer demos, and operational automation.</p></div>
     </div>
   </div>
 </div>
@@ -213,20 +161,13 @@
   <div class="clients-inner">
     <div class="clients-label">Sectors served</div>
     <div class="client-names">
-      <span class="client-name">Telecommunications</span>
-      <span class="client-sep">/</span>
-      <span class="client-name">Data Centers</span>
-      <span class="client-sep">/</span>
-      <span class="client-name">Semiconductors</span>
-      <span class="client-sep">/</span>
-      <span class="client-name">Spatial Audio</span>
-      <span class="client-sep">/</span>
-      <span class="client-name">Media &amp; Entertainment</span>
-      <span class="client-sep">/</span>
-      <span class="client-name">Life Sciences</span>
-      <span class="client-sep">/</span>
-      <span class="client-name">System Integrators</span>
-      <span class="client-sep">/</span>
+      <span class="client-name">Telecommunications</span><span class="client-sep">/</span>
+      <span class="client-name">Data Centers</span><span class="client-sep">/</span>
+      <span class="client-name">Semiconductors</span><span class="client-sep">/</span>
+      <span class="client-name">Spatial Audio</span><span class="client-sep">/</span>
+      <span class="client-name">Media &amp; Entertainment</span><span class="client-sep">/</span>
+      <span class="client-name">Life Sciences</span><span class="client-sep">/</span>
+      <span class="client-name">System Integrators</span><span class="client-sep">/</span>
       <span class="client-name">Defense &amp; Federal</span>
     </div>
   </div>
@@ -256,39 +197,15 @@
 <section class="services">
   <div class="section-header">
     <div class="section-eyebrow">What we do</div>
-    <h2 class="section-title">Five areas of focused expertise</h2>
+    <h2 class="section-title">Six areas of focused expertise</h2>
   </div>
   <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-      <h3>GPU &amp; AI infrastructure</h3>
-      <p>Architecture and go-to-market for GPU-as-a-service deployments. NVIDIA, AMD ROCm, DPU-based multi-tenant isolation, and inference optimization at scale.</p>
-      <div class="service-tags"><span class="tag">NVIDIA RTX</span><span class="tag">ROCm</span><span class="tag">BlueField-3</span><span class="tag">Inference</span></div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-      <h3>Data centers &amp; global networks</h3>
-      <p>GTM and partner strategy for data center, colocation, and global network providers. Deep fluency in interconnect ecosystems, carrier-neutral facilities, and hyperscaler relationships.</p>
-      <div class="service-tags"><span class="tag">Colocation</span><span class="tag">Interconnect</span><span class="tag">Global WAN</span><span class="tag">Hyperscaler</span></div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
-      <h3>Telco &amp; edge computing</h3>
-      <p>Deep carrier relationships and technical fluency across AI-RAN, edge GPU deployments, and GPU-over-IP. Proven across Tier 1 carriers in North America, Europe, and Asia.</p>
-      <div class="service-tags"><span class="tag">AI-RAN</span><span class="tag">Edge GPU</span><span class="tag">Carrier</span><span class="tag">MWC</span></div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <h3>Enterprise sales &amp; partner strategy</h3>
-      <p>Channel program design, partner recruitment, and pipeline development. Proven playbooks for VAR, SI, and OEM relationships in enterprise and telco segments.</p>
-      <div class="service-tags"><span class="tag">GTM</span><span class="tag">Channel</span><span class="tag">Pipeline</span><span class="tag">VAR / SI</span></div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-      <h3>AI app development &amp; prototyping</h3>
-      <p>Rapid prototyping of AI-powered applications, from concept to working demo. Full-stack builds using modern LLM APIs, edge runtimes, and production-ready scaffolding.</p>
-      <div class="service-tags"><span class="tag">LLM APIs</span><span class="tag">Firebase</span><span class="tag">Next.js</span><span class="tag">Rapid build</span></div>
-    </div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>GPU &amp; AI infrastructure</h3><p>Architecture and go-to-market for GPU-as-a-service deployments. NVIDIA, AMD ROCm, DPU-based multi-tenant isolation, and inference optimization at scale.</p><div class="service-tags"><span class="tag">NVIDIA RTX</span><span class="tag">ROCm</span><span class="tag">BlueField-3</span><span class="tag">Inference</span></div></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><h3>Data centers &amp; global networks</h3><p>GTM and partner strategy for data center, colocation, and global network providers. Deep fluency in interconnect ecosystems, carrier-neutral facilities, and hyperscaler relationships.</p><div class="service-tags"><span class="tag">Colocation</span><span class="tag">Interconnect</span><span class="tag">Global WAN</span><span class="tag">Hyperscaler</span></div></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><h3>Telco &amp; edge computing</h3><p>Deep carrier relationships and technical fluency across AI-RAN, edge GPU deployments, and GPU-over-IP. Proven across Tier 1 carriers in North America, Europe, and Asia.</p><div class="service-tags"><span class="tag">AI-RAN</span><span class="tag">Edge GPU</span><span class="tag">Carrier</span><span class="tag">MWC</span></div></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Enterprise sales &amp; partner strategy</h3><p>Channel program design, partner recruitment, and pipeline development. Proven playbooks for VAR, SI, and OEM relationships in enterprise and telco segments.</p><div class="service-tags"><span class="tag">GTM</span><span class="tag">Channel</span><span class="tag">Pipeline</span><span class="tag">VAR / SI</span></div></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><h3>AI app development &amp; prototyping</h3><p>Rapid prototyping of AI-powered applications, from concept to working demo. Full-stack builds using modern LLM APIs, edge runtimes, and production-ready scaffolding.</p><div class="service-tags"><span class="tag">LLM APIs</span><span class="tag">Firebase</span><span class="tag">Next.js</span><span class="tag">Rapid build</span></div></div>
+    <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><h3>Product marketing &amp; launch strategy</h3><p>Positioning, messaging, and launch execution for deep tech products going to market. From narrative development and competitive differentiation to channel-ready collateral and launch campaigns.</p><div class="service-tags"><span class="tag">Positioning</span><span class="tag">Messaging</span><span class="tag">Launch</span><span class="tag">Collateral</span></div></div>
   </div>
 </section>
 
@@ -298,6 +215,7 @@
       <div class="section-eyebrow">How we work</div>
       <h2 class="section-title">Embedded, not advisory</h2>
       <p style="font-size:14px;color:var(--cc-muted);margin-top:1rem;line-height:1.7;font-weight:300">No decks that collect dust. Composable Consulting operates as an extension of your team, from first whiteboard to first deal closed.</p>
+      <a href="/approach/" style="display:inline-block;margin-top:1.5rem;font-size:13px;font-weight:400;color:var(--cc-navy);text-decoration:none;border-bottom:1px solid var(--cc-navy);padding-bottom:1px">See our full approach</a>
     </div>
     <div class="approach-steps">
       <div class="step"><span class="step-num">01</span><div><h4>Discovery &amp; scoping</h4><p>Rapid assessment of technical environment, competitive landscape, and revenue opportunity. Delivered as a structured briefing, not a 40-page slide deck.</p></div></div>
@@ -340,13 +258,13 @@
     <p>Whether you need a partner for a high-stakes enterprise deal, a prototype built in weeks, or a go-to-market strategy that actually works, let's talk.</p>
     <div class="cta-actions">
       <a href="mailto:nick@composability.co" class="btn-light">nick@composability.co</a>
-      <a href="#" class="btn-ghost">View all services</a>
+      <a href="/services/" class="btn-ghost">View all services</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-logo">Composable<span>.</span></div>
+  <a href="/" class="footer-logo">Composable<span>.</span></a>
   <span class="footer-text">composability.co &nbsp;&middot;&nbsp; San Clemente, CA</span>
   <ul class="footer-links">
     <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
@@ -354,6 +272,5 @@
     <li><a href="mailto:nick@composability.co">Contact</a></li>
   </ul>
 </footer>
-
 </body>
 </html>
